@@ -1,4 +1,4 @@
-#!/usr/bin/env python -t
+#!/usr/bin/python -t
 ###############################################################################
 #
 # File:         sliding-puzzle.py
@@ -6,7 +6,7 @@
 # Description:  Tk Interface to Sliding Puzzle Solver (Enigma 1444)
 # Author:       Jim Randell
 # Created:      Mon Apr 08 09:37:30 2013
-# Modified:     Thu Jun  2 10:21:00 2016 (Jim Randell) jim.randell@gmail.com
+# Modified:     Fri Nov 20 09:48:17 2020 (Jim Randell) jim.randell@gmail.com
 # Language:     Python
 # Package:      N/A
 # Status:       Experimental (Do Not Distribute)
@@ -22,12 +22,13 @@ from __future__ import print_function
 # useful routines from enigma.py <http://www.magwag.plus.com/jim/enigma.html>
 #
 
+from itertools import islice
+
 # iterate through iterable <l> in chunks of size <n>
-def chunk(l, n):
-  i = iter(l)
-  n = range(n)
+def chunk(s, n):
+  i = iter(s)
   while True:
-    s = tuple(next(i) for x in n)
+    s = tuple(islice(i, 0, n))
     if not len(s): break
     yield s
 
