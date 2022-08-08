@@ -1,4 +1,4 @@
-#!/usr/bin/python -t
+#! python
 ###############################################################################
 #
 # File:         sliding-puzzle.py
@@ -6,7 +6,7 @@
 # Description:  Tk Interface to Sliding Puzzle Solver (Enigma 1444)
 # Author:       Jim Randell
 # Created:      Mon Apr 08 09:37:30 2013
-# Modified:     Fri Nov 20 09:48:17 2020 (Jim Randell) jim.randell@gmail.com
+# Modified:     Mon Aug  8 13:11:54 2022 (Jim Randell) jim.randell@gmail.com
 # Language:     Python
 # Package:      N/A
 # Status:       Experimental (Do Not Distribute)
@@ -74,7 +74,7 @@ class Puzzle(object):
     import random
     random.shuffle(g)
     # count the number of inversions in the grid
-    i = sum(1 for i in range(len(g)) if g[i] > 0 for j in range(i + 1, len(g)) if g[j] > 0 and g[i] > g[j])    
+    i = sum(1 for i in range(len(g)) if g[i] > 0 for j in range(i + 1, len(g)) if g[j] > 0 and g[i] > g[j])
     b = g.index(0)
     # a puzzle with odd m always has even permutations, for even m it alternates with the row of b
     if (m % 2 == 1 and i % 2 == 1) or (m % 2 == 0 and ((i + b // m) % 2 == 0)):
@@ -368,7 +368,7 @@ class App(Frame):
 
     self.canvas = canvas
     self.solve_button = solve_button
-    
+
 
   def fill(self, t):
     if t == self.current_tile: return self.hl
@@ -385,7 +385,7 @@ class App(Frame):
     # get the dimensions of the canvas
     cw = self.canvas.winfo_width()
     ch = self.canvas.winfo_height()
-    
+
     # compute the size of a tile
     (x0, y0, frame, border) = (self.padx, self.pady, self.frame, self.border)
     tile = min((cw - 2 * (x0 + frame) - (self.m + 1) * border) // self.m, (ch - 2 * (y0 + frame) - (self.n + 1) * border) // self.n)
@@ -450,6 +450,7 @@ class App(Frame):
     if len(moves) == 0:
       self.current_tile = self.current_position = None
       self.placed_tiles = set()
+      self.set_message()
       self.stop()
     self.moves = moves
 
@@ -515,7 +516,7 @@ class App(Frame):
   def stop(self):
     self.moves = []
     self.solve_button.configure(text='Solve', command=self.solve)
-    
+
 
 def main():
   # create the UI
