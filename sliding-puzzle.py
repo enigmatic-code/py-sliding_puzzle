@@ -1,4 +1,4 @@
-#! python
+#! python3
 ###############################################################################
 #
 # File:         sliding-puzzle.py
@@ -6,7 +6,7 @@
 # Description:  Tk Interface to Sliding Puzzle Solver (Enigma 1444)
 # Author:       Jim Randell
 # Created:      Mon Apr 08 09:37:30 2013
-# Modified:     Mon Aug  8 13:11:54 2022 (Jim Randell) jim.randell@gmail.com
+# Modified:     Fri Aug 12 09:29:08 2022 (Jim Randell) jim.randell@gmail.com
 # Language:     Python
 # Package:      N/A
 # Status:       Experimental (Do Not Distribute)
@@ -346,7 +346,7 @@ class App(Frame):
     target_button.pack(side=LEFT, padx=10)
     scramble_button = Button(buttons, text="Scramble", command=self.scramble)
     scramble_button.pack(side=LEFT, padx=10)
-    quit_button = Button(buttons, text="Quit", command=self.quit)
+    quit_button = Button(buttons, text="Quit", command=self.master.destroy)
     quit_button.pack(side=RIGHT, padx=10)
 
     # main display aread
